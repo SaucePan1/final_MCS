@@ -21,9 +21,9 @@ graph = cycle; %we rename it since in
 %the future we will try different tiypes of graphs
 
 %create label vector 1 is Cooperator 0 is Detractor
-labels = initLabels(p, n);
+%labels = initLabels(p, n);
 
-
+labels = [0,0,1,1,0]
 % algorithm
 
 for i =1:max_reps
@@ -43,6 +43,7 @@ for i =1:max_reps
 
     c_score = 0;
     d_score = 0;
+    
     %get fitness score for cooperators
     for nc =neig_c
         fitness = getFitness(b, c,w, temp, labels, nc);

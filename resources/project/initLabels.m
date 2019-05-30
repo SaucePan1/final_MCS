@@ -1,10 +1,17 @@
-function [labels] = initLabels(p, n)
-% initializes labels with prob of Cooperator = p
+function [labels] = initLabels(c, n)
+% initializes labels with one cooperator or one detractor.
+%c = 1 one cooperator , c = 0 we initialize with one detractor
 
+index = randi(n,1);
 
-labels = zeros(1,n);
-for i=1:n
-    labels(i) = labels(i) + (rand < p);
+if c
+    %all detractors but one cooperator
+    labels = zeros(1,n);
+    labels(index) = 1;
+else
+    %all cooperators but one detractor
+    labels = ones(1,n);
+    labels(index) = 0;
 end
 
 end
