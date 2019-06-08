@@ -8,7 +8,7 @@ function [fp] = getFP(b,c,w, n, graph, coop)
 %create label vector 1 is Cooperator 0 is Detractor
 %init labels with one cooperator
 
-max_runs = 10*n;
+max_runs = 50*n;
 
 labels = initLabels(coop,n);
 invaded_count = 0;
