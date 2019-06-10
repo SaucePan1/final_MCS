@@ -7,7 +7,7 @@ function [graph] = getGraph(type, n, k)
 %'sfn' creates a graph with preferential network, where each vertex has k
 %neighbours
 graph=sparse(n,n);
-if strcmp(type, 'lat') == 1
+if strcmp(type, 'cyc') == 1
     if k == 2 
         graph=graph+sparse(2:n,1:(n-1),ones(1,n-1),n,n); %connects each vertex to the next
         graph=graph+sparse(1:(n-1),2:n,ones(1,n-1),n,n); %(link is reflexive)
@@ -196,10 +196,9 @@ elseif strcmp(type, 'lat') == 1
         end
     end
 elseif strcmp(type, 'rrg') == 1 
-    createRandRegGraph(n,k);
+    graph=createRandRegGraph(n,k);
 elseif strcmp(type, 'rg') == 1
     linksleft=n*k;
-    disp(linksleft)
     while linksleft > 0
         chosen=randperm(n,2);
         if chosen(1) ~= chosen(2) && graph(chosen(1),chosen(2)) ~= 1
@@ -209,5 +208,7 @@ elseif strcmp(type, 'rg') == 1
     end
 elseif strcmp(type, 'sfn') == 1
     graph=SFNG(n,k);
+elseif strcmp(type, 'sw') == 1
+    graph=createSmallWorld(n,k);
 end
 end
