@@ -1,8 +1,9 @@
 function [labels] = DBweighted_strat_update(b,c, w,n, graph, labels)
-% Updates strategies
-%
 
+% Update strategies
+%   
 
+    
     %select vertex at random (this one dies)
     v = randi(n,1);
 
@@ -17,7 +18,8 @@ function [labels] = DBweighted_strat_update(b,c, w,n, graph, labels)
     %get fitness score of each neighbour 
     fit_neigh = zeros(1, length(neigh));
     for ng=neigh
-       fit_neigh(ng) = get_payoff_weight(b,c, w, v,labels, graph);
+       %apply weak selection
+       fit_neigh(ng) = (1-w) + w*get_payoff_weight(b,c, w, v,labels, graph);
     end
     
     %get probability of updating to cooperation
@@ -36,7 +38,6 @@ function [labels] = DBweighted_strat_update(b,c, w,n, graph, labels)
         %v updates to detraction
         labels(v) = 0;
     end
-    
     
     
     
