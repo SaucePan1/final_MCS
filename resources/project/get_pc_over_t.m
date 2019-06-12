@@ -10,8 +10,8 @@ n=100;
 k= 4;
 
 %sim parameters
-T= 500;
-max_runs = 20;
+T= 5;
+max_runs = 2;
 
 
 d_ratios = [0.001, 0.05, 0.1, 0.15,0.25];
@@ -33,3 +33,6 @@ for count =1:length(d_ratios)
     pc_t_all_sim(:,:,count) = get_final_cooperators(b,c,w,Bs,Bw,dt,n, og_graph, T, max_runs);
     toc
 end
+sb_c = num2str(b_c_ratio);
+filename = strcat("rrg_k_4_bc_ratio_", sb_c, "T_", num2str(T), "_max_runs", num2str(20));
+save(filename, "pc_t_all_sim")
