@@ -13,6 +13,9 @@ max_runs = 10;
 
 
 % REMEMBER TO ADD SMALL/MEDIUM/BIG DELTA TO FILENAME
+%low d_ratios = [0.001, 0.05, 0.1, 0.15,0.25]
+%middle d_ratios = [0.8, 0.9, 1, 1.1, 1.2]
+% big d = [4, 1/0.15, 1/0.1, 1/0.05, 1/0.001]
 d_ratios = [0.001, 0.05, 0.1, 0.15,0.25];
 b_c_ratios = [3, 3.5, 4, 4.5, 5];
 k= 4; % num of neighbours
