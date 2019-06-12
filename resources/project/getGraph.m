@@ -2,7 +2,7 @@ function [graph] = getGraph(type, n, k)
 %Creates a graph of the type specified with n vertex
 %'cyc' creates a cycle, regardless of k
 %'lat' created a lattice with n^2 vertex, regardless of k
-%'rrg' creates a regular random cycle, where each vertex has k neighbours
+%'rrg' creates a regular random graph, where each vertex has k neighbours
 %'rg' creates a random graph, where the average of neighbours is k
 %'sfn' creates a graph with preferential network, where each vertex has k
 %neighbours
