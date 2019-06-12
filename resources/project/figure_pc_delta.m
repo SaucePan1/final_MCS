@@ -27,7 +27,7 @@ deaths= Bs*dt*n
 pc_t_all_sim= zeros(max_runs,T, length(d_ratios), length(b_c_ratios));
 
 for count1 =1:length(b_c_ratios)
-    b = b_c_ratio*c
+    b = b_c_ratios(count1)*c
     for count =1:length(d_ratios)
         delta = d_ratios(count)
         Bw = delta*Bs;
