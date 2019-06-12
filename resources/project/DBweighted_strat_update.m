@@ -18,6 +18,7 @@ function [labels] = DBweighted_strat_update(b,c, w,n,tot_vert, graph, labels)
         %get neighbours
         neigh = find(graph(v,:));
         %get fitness score of each neighbour 
+        fit_neigh = 0; %init to 0 
         for ng=1:length(neigh)
            %apply weak selection
            fit_neigh(ng) = (1-w) + w*get_payoff_weight(b,c, w, neigh(ng),labels, graph);
@@ -25,12 +26,12 @@ function [labels] = DBweighted_strat_update(b,c, w,n,tot_vert, graph, labels)
 
         %get probability of updating to cooperation
         w_c = graph(v,:).*labels; %get weights of cooperators
-        fitness_C= sum(w_c(neigh).*fit_neigh)  %proportional to strenght of the link and strenght of the strategy
+        fitness_C= sum(w_c(neigh).*fit_neigh);  %proportional to strenght of the link and strenght of the strategy
 
         w_d = graph(v,:).*(~labels); %get weights of detractors
-        fitness_D = sum(w_d(neigh).*fit_neigh)
+        fitness_D = sum(w_d(neigh).*fit_neigh);
 
-        prob_C = fitness_C/(fitness_D+fitness_C)
+        prob_C = fitness_C/(fitness_D+fitness_C);
 
 
         if rand <prob_C

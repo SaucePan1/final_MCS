@@ -1,23 +1,9 @@
-%model parameters
+function [fp] = get_fp_w_weights(b,c,w,Bs,Bw,dt, n,og_graph)
+%get fixation probability vector
+
+%max runs is 10 times n since fp is 1/n
 max_runs = 10*n;
-n= 10 %number of vertices
-b=5
-c=0.2
-w = 0.01 %strength of fitness score 
-Bs = 5; %rate of strategy update
-Bw = 5; %rate of weigth update 
-dt=0.01;
-%create graph (sparse matrix)
-%create cycle
 
-A = sparse(2:n, 1:n-1, ones(1,n-1), n, n);
-B = sparse(1:n-1, 2:n, ones(1,n-1), n, n);
-C = sparse([1,n],[n,1], [1,1], n, n);
-
-cycle = A + B + C;
-
-graph = cycle; %we rename it since in 
-%the future we will try different tiypes of graphs
 
 %prepare payoff matrix
 payoff_matrix = [[0,b];[-c, b-c]];
@@ -37,9 +23,10 @@ for run =1:max_runs
     %init labels for one coop and n-1 detractors (or viceversa if coop=0)
     labels = initLabels(coop,n);
     %init graph 
-    graph = cycle;
+    graph = og_graph;
     
     count = 0;
+    run
     while ~stop
         % update strategy
         count= count+1;
@@ -60,9 +47,9 @@ for run =1:max_runs
         stop = or(all_c , all_d); %returns one if all 1 or all 0
         
     end
-    invaded_count = invaded_count + coop*all_c + (~coop)*all_d %increases if minority invaded
+    invaded_count = invaded_count + coop*all_c + (~coop)*all_d; %increases if minority invaded
 end
 
 fp = invaded_count/max_runs;
-
+end
 
