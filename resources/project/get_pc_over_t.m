@@ -1,16 +1,16 @@
-b = 1;
+b_c_ratio = 5;
 c= 0.2;
+b = b_c_ratio*c;
 w= 0.01;
 dt = 0.01;
 Bs = 1;
 delta = 1
-b/c
 Bw = delta*Bs;
 n=100;
 T= 10;
 max_runs = 5;
 
-b_ratios = [4, 4.5, 5, 5.5, 6]
+d_ratios = [0.001, 0.05, 0.1, 0.15,0.25];
 k= 4; % num of neighbours
 
 %create graph (sparse matrix)
@@ -20,10 +20,12 @@ og_graph = getGraph("rrg", 100, 4);
 
 Bs*dt*n
 %
-pc_t_all_sim= zeros(length(b_ratios),max_runs,T);
-for count =1:length(b_ratios)
-    b = c*b_ratios(count)
+pc_t_all_sim= zeros(max_runs,T, length(b_ratios));
+for count =1:length(d_ratios)
+    delta = d_ratios(count)
+    Bw = delta*Bs;
     tic
-    pc_t_all_sim(count,:,:) = get_final_cooperators(b,c,w,Bs,Bw,dt,n, og_graph, T, max_runs);
+    %delta, sim, T
+    pc_t_all_sim(:,:,count) = get_final_cooperators(b,c,w,Bs,Bw,dt,n, og_graph, T, max_runs);
     toc
 end
