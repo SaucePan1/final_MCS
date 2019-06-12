@@ -1,4 +1,5 @@
-b_c_ratio = 5;
+%model parameters
+b_c_ratio = 3;
 c= 0.2;
 b = b_c_ratio*c;
 w= 0.01;
@@ -7,8 +8,13 @@ Bs = 1;
 delta = 1
 Bw = delta*Bs;
 n=100;
-T= 10;
-max_runs = 5;
+%graph neigh
+k= 4;
+
+%sim parameters
+T= 1000;
+max_runs = 20;
+
 
 d_ratios = [0.001, 0.05, 0.1, 0.15,0.25];
 k= 4; % num of neighbours
@@ -16,7 +22,7 @@ k= 4; % num of neighbours
 %create graph (sparse matrix)
 %create cycle
 
-og_graph = getGraph("rrg", 100, 4);
+og_graph = getGraph("rrg", 100, k);
 
 Bs*dt*n
 %
