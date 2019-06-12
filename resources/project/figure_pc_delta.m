@@ -12,6 +12,7 @@ T= 500;
 max_runs = 10;
 
 
+% REMEMBER TO ADD SMALL/MEDIUM/BIG DELTA TO FILENAME
 d_ratios = [0.001, 0.05, 0.1, 0.15,0.25];
 b_c_ratios = [3, 3.5, 4, 4.5, 5];
 k= 4; % num of neighbours
@@ -36,5 +37,5 @@ for count1 =1:length(b_c_ratios)
         toc
     end
 end
-filename = strcat("rrg_k_4", "T_", num2str(T), "_max_runs", num2str(20));
+filename = strcat("rrg_k_4", "T_", num2str(T), "_max_runs", num2str(20), "small_delta");
 save(filename, "pc_t_all_sim")
