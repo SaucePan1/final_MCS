@@ -21,6 +21,7 @@ d_ratios_tot(1)= 0.001;
 b_c_ratios = ((1:15)-1)*0.2 +2;
 k= 4; % num of neighbours
 
+d_ratios = d_ratios_tot(7:8);
 %create graph (sparse matrix)
 %create cycle
 
