@@ -10,8 +10,8 @@ n=100;
 k= 4;
 
 %sim parameters
-T= 500;
-max_runs = 20;
+T= 250;
+max_runs = 10;
 
 
 d_ratios = [0.001, 0.05, 0.1, 0.15,0.25];

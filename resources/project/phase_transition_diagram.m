@@ -8,16 +8,17 @@ n=100;
 k= 4;
 
 %sim parameters
-T= 250;
-max_runs = 10;
+T= 200;
+max_runs = 20;
 
 
 % REMEMBER TO ADD SMALL/MEDIUM/BIG DELTA TO FILENAME
 %low d_ratios = [0.001, 0.05, 0.1, 0.15,0.25]
 %middle d_ratios = [0.8, 0.9, 1, 1.1, 1.2]
-% big d = [4, 1/0.15, 1/0.1, 1/0.05, 1/0.001]
-d_ratios = [0.001, 0.05, 0.1, 0.15,0.25];
-b_c_ratios = [3, 3.5, 4, 4.5, 5];
+%big d = [4, 1/0.15, 1/0.1, 1/0.05, 1/0.001]
+d_ratios_tot = ((1:15)-1) *0.02;
+d_ratios_tot(1)= 0.001;
+b_c_ratios = ((1:15)-1)*0.2 +2;
 k= 4; % num of neighbours
 
 %create graph (sparse matrix)
@@ -40,5 +41,3 @@ for count1 =1:length(b_c_ratios)
         toc
     end
 end
-filename = strcat("rrg_k_4", "T_", num2str(T), "_max_runs", num2str(20), "small_delta");
-save(filename, "pc_t_all_sim")
