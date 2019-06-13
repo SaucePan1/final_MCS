@@ -24,7 +24,7 @@ k= 4; % num of neighbours
 %create graph (sparse matrix)
 %create cycle
 
-og_graph = getGraph("rrg", n, k);
+og_graph = createSmallWorld(n,k);
 
 deaths= Bs*dt*n
 %
@@ -41,3 +41,5 @@ for count1 =1:length(b_c_ratios)
         toc
     end
 end
+filename = strcat("sw_");
+save(filename, "pc_t_all_sim")
